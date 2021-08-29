@@ -1,3 +1,3 @@
-# ESP8266 Wake On Lan
-### Simple web server that issues a magic packet on HTTP request
-See [this WOL library](https://github.com/a7md0/WakeOnLan) and [this ESP8266 web server guide](https://lastminuteengineers.com/creating-esp8266-web-server-arduino-ide/). This whole project is a Frankenstein's monster made out of those two.
+# ESP8266 Wake On Lan Discord
+The Discord branch uses Discord rather than a webserver to let the ESP8266 know when to send the packet.
+Needs a Discord bot token.
