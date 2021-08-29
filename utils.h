@@ -41,12 +41,6 @@ b5t6a4m7H4Ht
 
 void apiRequest(String &response, String apiEndPoint, String botToken);
 
-char *stripStringTill(char c_to_search[], char searchIn[]);
-
-char *getStringTill(char c_to_search[], char searchIn[]);
-
-char* removeStuff(char str[], int beginstrip, int endstrip);
-
 String getLatestMessage(String botToken, String channelId, char * destId);
 
 
