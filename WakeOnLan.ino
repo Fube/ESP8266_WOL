@@ -1,12 +1,12 @@
-#include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <WiFiUdp.h>
 #include <WakeOnLan.h>
 #include <string.h>
 
-int * parseIP(char *ip);
+#include "config.h" // Make your own config.h file containing your SSID, PASSWORD, IP, GATEWAY, SUBNET, BOT_TOKEN, and CHANNEL_ID
+#include "utils.h"
 
-#include "config.h" // Make your own config.h file containing your SSID, PASSWORD, IP, GATEWAY, and SUBNET
+int * parseIP(char *ip);
 
 // Prototypes
 void handle_OnConnect();
@@ -51,17 +51,17 @@ void setup()
     free(IP_ARRAY);
     free(GATEWAY_ARRAY);
     free(SUBNET_ARRAY);
-
+ 
     WOL.calculateBroadcastAddress(WiFi.localIP(), WiFi.subnetMask()); // Optional  => To calculate the broadcast address, otherwise 255.255.255.255 is used (which is denied in some networks).
     
     server.begin();
     Serial.println("HTTP server started");
+    getLatestMessage(BOT_TOKEN, CHANNEL_ID);
 }
 
 
 void loop()
 {
-  server.handleClient();
 }
 
 
