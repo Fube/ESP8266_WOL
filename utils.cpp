@@ -58,14 +58,14 @@ void apiRequest(String &response, String apiEndPoint, String botToken){
 }
 
 //gets the lastest message from the bot
-void getLatestMessage(String botToken, String channelId){
+String getLatestMessage(String botToken, String channelId, char * destId){
 
     //get channel info
     String payload;
     String getchannelinfo = "/api/channels/" + channelId;
     apiRequest(payload, getchannelinfo, botToken);
     
-    DynamicJsonDocument doc(payload.length());
+    DynamicJsonDocument doc(2048);
     deserializeJson(doc, payload);
 
     String lastMessageId = doc["last_message_id"];
@@ -75,6 +75,8 @@ void getLatestMessage(String botToken, String channelId){
     deserializeJson(doc, payload);
     
     String content = doc["content"];
+    auto id = doc["id"].as<const char*>();
+    strcpy(destId, id);
 
-    Serial.println(content);
+    return content;
 }

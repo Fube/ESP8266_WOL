@@ -6,6 +6,8 @@
 #include <Wire.h>
 #include <ArduinoJson.h>
 
+#define NUM(off, mult) ((timeStampBuffer[(off)] - '0') * (mult))
+
 const char CERT [] PROGMEM = R"CERT(
 -----BEGIN CERTIFICATE-----
 MIIEtTCCBFugAwIBAgIQB92CSGa8+bgtORFq2j6oXDAKBggqhkjOPQQDAjBKMQsw
@@ -45,7 +47,7 @@ char *getStringTill(char c_to_search[], char searchIn[]);
 
 char* removeStuff(char str[], int beginstrip, int endstrip);
 
-void getLatestMessage(String botToken, String channelId);
+String getLatestMessage(String botToken, String channelId, char * destId);
 
 
 #endif
